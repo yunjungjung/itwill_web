@@ -77,7 +77,7 @@ public class Post {
                 + createdTime + ", modifiedTime=" + modifiedTime + "]";
     }
     
-    // builder 패턴
+    // TODO: builder 패턴
     public static PostBuilder builder() {
         return new PostBuilder();
     }

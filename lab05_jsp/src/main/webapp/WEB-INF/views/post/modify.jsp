@@ -23,33 +23,35 @@
                     <h2>포스트 수정 페이지</h2>
                 </div>
                 <div class="card-body">
-                    <form>
+                    <form id="modifyForm">
                         <div class="mt-2">
                             <label for="id" class="form-label">번호</label>
                             <input id="id" class="form-control" type="text"
-                                value="${post.id}" readonly />
+                                name="id" value="${post.id}" readonly />
                         </div>
                         <div class="mt-2">
                             <label for="title" class="form-label">제목</label>
                             <input id="title" class="form-control" type="text"
-                                value="${post.title}" />
+                                name="title" value="${post.title}" />
                         </div>
                         <div class="mt-2">
                             <label for="content" class="form-label">내용</label>
                             <textarea id="content" class="form-control" 
-                                rows="5">${post.content}</textarea>
+                                name="content" rows="5">${post.content}</textarea>
                         </div>
-                        <div class="mt-2">
+                        <div class="mt-2 d-none">
                             <label for="author" class="form-label">작성자</label>
                             <input id="author" class="form-control" type="text"
                                 value="${post.author}" readonly />
                         </div>
                     </form>
                 </div>
-                <div class="card-footer">
-                    <button id="btnDelete" class="btn btn-outline-danger">삭제</button>
-                    <button id="btnUpdate" class="btn btn-outline-success">업데이트</button>
-                </div>
+                <c:if test="${post.author eq signedInUser}">
+                    <div class="card-footer">
+                        <button id="btnDelete" class="btn btn-outline-danger">삭제</button>
+                        <button id="btnUpdate" class="btn btn-outline-success">업데이트</button>
+                    </div>
+                </c:if>
             </div>
         </main>
     </div>
@@ -57,5 +59,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" 
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
         crossorigin="anonymous"></script>
+    
+    <c:url var="post_modify_js" value="/js/post_modify.js" />
+    <script src="${post_modify_js}"></script>
 </body>
 </html>

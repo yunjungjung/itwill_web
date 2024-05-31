@@ -6,7 +6,7 @@
         </Console>
     </Appenders>
     <Loggers>
-        <Logger name="com.zaxxer.hikari" level="trace" additivity="false">
+        <Logger name="com.zaxxer.hikari" level="info" additivity="false">
             <AppenderRef ref="console" />
         </Logger>
         <Root level="debug" additivity="false">
