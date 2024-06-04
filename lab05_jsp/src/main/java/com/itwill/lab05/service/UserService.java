@@ -34,5 +34,16 @@ public enum UserService {
         
         return user;
     }
+    
+    // 내정보를 얻기 위한 메서드
+    
+    public User read(String userid) {
+        log.debug("read(userid={})", userid);
+        
+        User user = userDao.selectByUserid(userid);
+        log.debug("select 결과 = {}", user);
+        
+        return user;
+    }
 
 }
