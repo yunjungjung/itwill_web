@@ -17,15 +17,25 @@
 
     
     <div class="container-fluid">
-        <c:set var="pageTitle" value="Home" scope="page" />
+        <c:set var="pageTitle" value="오늘 점심 = 떡볶이" scope="page" />
         <%-- pageContext.setAttribute("pageTitle", "Home"); --%>
         <%@ include file="./fragments/header.jspf" %>
         
              <!-- 이미지 삽입 -->
         <div class="row">
-            <div class="col-md-12 text-center">
+            <div class="col-md-12 text-center"><br/>
                 <img src="image/이제훈.jpg" alt="Example Image" class="img-fluid" />
             </div>
+        <div class="col-md-12 text-center">
+        <br/>💜제훈제훈💜
+        </div>
+        <div><br/>
+            <center><iframe width="560" height="315" 
+            src="https://www.youtube.com/embed/3670oCA5t1Y?si=GlOcIPmqtTom1HDP&amp;controls=0&amp;autoplay=1&amp;mute=1&loop=1" 
+            title="YouTube video player" frameborder="0" 
+            allow="autoplay"
+            referrerpolicy="strict-origin-when-cross-origin" 
+            allowfullscreen></iframe></center>
         </div>
     </div>
     
