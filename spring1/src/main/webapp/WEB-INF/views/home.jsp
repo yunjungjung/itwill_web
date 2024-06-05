@@ -23,8 +23,8 @@
  <!-- 상대 경로 -->    
  <!-- <img alt="쌍쌍바.jpg" src="./images/쌍쌍바.jpg" /> --> 
         
-        <c:url var="쌍쌍바" value="images/쌍쌍바.jpg" />
-        <img alt="쌍쌍바" src="${쌍쌍바}" />
+        <c:url var="asd" value="images/쌍쌍바.jpg" />
+        <img alt="쌍쌍바" src="${asd}" />
         <img src="http://localhost:8080/spring1/images/쌍쌍바.jpg" />
     </header>
     
