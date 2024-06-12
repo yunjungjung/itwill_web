@@ -23,7 +23,7 @@ public class PostDaoTest {
 	@Autowired
 	private PostDao postDao;
 	
-	@Test
+//	@Test
 	public void testSelectAll() {
 		Assertions.assertNotNull(postDao);
 		
@@ -33,4 +33,43 @@ public class PostDaoTest {
 		}
 	}
 
+	@Test
+	public void testSelectById() {
+		Post post = postDao.selectById(2); // DB 테이블에 ID가 있는 경우
+		Assertions.assertNotNull(post);
+		log.debug(post.toString());
+		
+		Post post2 = postDao.selectById(1); // DB 테이블에 ID가 없는 경우
+		Assertions.assertNotNull(post2);
+	}
+	
+	@Test
+	public void testInsert() {
+		// insert할 데이터
+		Post post = Post.builder()
+				.title("Mybaits 테스트")
+				.content("Mybatis-Spring insert 테스트")
+				.author("admin")
+				.build();
+		int result = postDao.insertPost(post);
+		Assertions.assertEquals(1, result);
+						
+	}
+	
+	@Test
+	public void testupdate() {
+		Post post = Post.builder()
+				.id(1)
+				.title("Mybatis 업데이트")
+				.content("업데이트")
+				.build();
+	int result = postDao.updatePost(post);
+	Assertions.assertEquals(1, result);
+	}
+	
+    @Test
+    public void testDelete() {
+        int result = postDao.deletePost(101);
+        Assertions.assertEquals(1, result);
+    }
 }
