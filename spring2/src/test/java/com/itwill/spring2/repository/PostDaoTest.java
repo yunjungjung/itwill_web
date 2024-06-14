@@ -9,18 +9,16 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
-
-
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @ExtendWith(SpringExtension.class)
 @ContextConfiguration(
-        locations = { "file:src/main/webapp/WEB-INF/application-context.xml" }
-)
+		locations = {"file:src/main/webapp/WEB-INF/application-context.xml"}
+		)
 public class PostDaoTest {
 	
-	@Autowired
+	@Autowired // 의존성 주입(DI)
 	private PostDao postDao;
 	
 //	@Test
@@ -29,47 +27,40 @@ public class PostDaoTest {
 		
 		List<Post> list = postDao.selectOrderByIdDesc();
 		for (Post p : list) {
-			System.out.println(p);
+			System.out.println("\t" + p);
 		}
 	}
-
-	@Test
+	
+//	@Test
 	public void testSelectById() {
-		Post post = postDao.selectById(2); // DB 테이블에 ID가 있는 경우
-		Assertions.assertNotNull(post);
-		log.debug(post.toString());
+		Post post1 = postDao.selectById(1); // DB 테이블에 id가 있는 경우
+		Assertions.assertNotNull(post1);
+		log.debug(post1.toString());
 		
-		Post post2 = postDao.selectById(1); // DB 테이블에 ID가 없는 경우
-		Assertions.assertNotNull(post2);
+		Post post2 = postDao.selectById(100); // DB 테이블에 id가 없는 경우
+		Assertions.assertNull(post2);
 	}
 	
 	@Test
 	public void testInsert() {
 		// insert할 데이터
-		Post post = Post.builder()
-				.title("Mybaits 테스트")
-				.content("Mybatis-Spring insert 테스트")
-				.author("admin")
-				.build();
+		Post post = Post.builder().title("MyBatis 테스트").content("MyBatis-Spring insert 테스트").author("admin").build();
 		int result = postDao.insertPost(post);
 		Assertions.assertEquals(1, result);
-						
 	}
 	
 	@Test
-	public void testupdate() {
-		Post post = Post.builder()
-				.id(1)
-				.title("Mybatis 업데이트")
-				.content("업데이트")
-				.build();
-	int result = postDao.updatePost(post);
-	Assertions.assertEquals(1, result);
+	public void testUpdate() {
+		// 업데이트할 포스트 객체
+		Post post = Post.builder().id(62).title("MyBatis 업데이트 테스트").content("MyBatis-Spring update 테스트").build();
+		int result = postDao.updatePost(post);
+		Assertions.assertEquals(1, result);
 	}
 	
-    @Test
-    public void testDelete() {
-        int result = postDao.deletePost(101);
-        Assertions.assertEquals(1, result);
-    }
+	@Test
+	public void testDelete() {
+		int result = postDao.deletePost(11);
+		Assertions.assertEquals(1, result);
+	}
+
 }

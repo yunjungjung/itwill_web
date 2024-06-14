@@ -98,7 +98,7 @@ private final PostService postService;
     
     @GetMapping("/search")
     public String search(PostSearchDto dto, Model model) {
-        log.debug("search(dto={})", dto);
+        log.debug("search({})", dto);
         
         // 서비스 계층의 메서드를 호출해서 검색 서비스를 수행.
         List<PostListDto> list = postService.search(dto);
@@ -106,6 +106,6 @@ private final PostService postService;
         // 검색 결과를 뷰에 전달하기 위해서 모델 속성(attribute)에 추가.
         model.addAttribute("posts", list);
         
-        return "redirect:/post/list"; //-> 뷰의 경로(/WEB-INF/views/post/list.jsp)
+        return "post/list"; //-> 뷰의 경로(/WEB-INF/views/post/list.jsp)
     }
 }
