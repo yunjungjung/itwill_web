@@ -61,8 +61,7 @@
                     <c:url var="postModifyPage" value="/post/modify">
                         <c:param name="id" value="${post.id}" />
                     </c:url>
-                    <a class="btn btn-outline-primary"
-                        href="${postModifyPage}">수정하기</a>
+                    <a class="btn btn-outline-primary" href="${postModifyPage}">수정하기</a>
                 </div>
             
             </div>
@@ -82,15 +81,13 @@
                         <div class="mt-2 row">
                             <div class="col-10">
                                 <!-- 댓글 입력 -->
-                                <textarea class="form-control" rows="3"
-                                    id="ctext" placeholder="댓글 내용"></textarea>
+                                <textarea class="form-control" rows="3" id="ctext" placeholder="댓글 내용"></textarea>
                                 <!-- 댓글 작성자 아이디: 
                                 TODO: 로그인한 사용자의 아이디로 설정 -->
-                                <input id="username" placeholder="댓글 작성자" />
+                                <input id="username" class="form-control mt-2" placeholder="댓글 작성자" />
                             </div>
-                            <div class="col-2">
-                                <button class="btn btn-outline-success" 
-                                    id="btnRegisterComment">등록</button>
+                            <div class="col-2 d-flex align-items-center">
+                                <button class="btn btn-outline-success" id="btnRegisterComment">등록</button>
                             </div>
                         </div>
                     </div>
@@ -100,7 +97,29 @@
                 </div>
             </div>
         </section>
-        
+
+        <!-- 댓글 업데이트 모달(다이얼로그) -->
+        <div id="commentModal" class="modal" tabindex="-1">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">댓글 업데이트</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body">
+                        <!-- 수정할 댓글 아이디(번호) -->
+                        <input class="d-none" id="modalCommentId" />
+                        <!-- 수정할 댓글 내용 -->
+                        <textarea class="form-control" id="modalCommentText"></textarea>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">취소</button>
+                        <button type="button" class="btn btn-outline-primary" id="btnUpdateComment">저장</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
     
     <!-- Bootstrap의 JS 라이브러리 -->
@@ -108,7 +127,7 @@
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" 
         crossorigin="anonymous"></script>
     
-    <!-- Axio JS 라이브러리 -->
+    <!-- Axios JS 라이브러리 -->
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     
     <!-- 우리가 만드는 JS 파일 -->
